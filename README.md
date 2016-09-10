@@ -1,22 +1,22 @@
 # Mutual-SSL
 ## Motivation: 
  
-* Why do we need ssl/tls? 
+* Why do we need ssl/tls?  
 Integrity, and confidentiality. In other words: What being said isn’t tampered (by a man in the middle) with, and to ensure that a party is really who he is claiming to be. 
  
-* What’s the difference between ssl/tls and https? 
+* What’s the difference between ssl/tls and https?  
 SSL(secure socket layer) or TLS (transport layer security) operate on the transport layer in the OSI model, they can work with http or any other compatible protocol, https is http + ssl/tls. 
  
-* What’s the difference between ssl and tls? 
+* What’s the difference between ssl and tls?  
 TLS is the successor of SSL. 
  
-* What’s the difference between one-way ssl and two-way (mutual) ssl? 
+* What’s the difference between one-way ssl and two-way (mutual) ssl?   
 In one way ssl, only the authentication of the server is being verified, while in mutual ssl the authenticity of the two parties are. 
  
-* What’s the difference between keystore and trust store? 
+* What’s the difference between keystore and trust store?  
 The key store saves your private keys, while the trust store save the certificates from parties you trust. 
  
-* What’s the difference between a public key, and a certificate? 
+* What’s the difference between a public key, and a certificate?  
 A certificate contains a public key. The certificate, in addition to the public key, contains additional information, such as issuer, what it's supposed to be used for, and any other type of metadata. Typically a certificate is itself signed with a private key that verifies its authenticity.
 
 ## Notes: 
@@ -26,7 +26,7 @@ By default, a key pair is generated and (encrypted by a passphrase), and then th
 I am using a mac, having openssl installed.
 
 ### Setting up our keys:
-Let’s work in an empty directory (say: ~/ssl_keys)
+Let’s work in an empty directory (say: ~/ssl_keys)  
 
 * Create a self-signed certificate authority (a private key pair):
  
@@ -36,12 +36,12 @@ openssl req -newkey rsa:2048 -nodes -keyform PEM -keyout CA.key -x509 -days 365 
 
 ### options meaning:
 
-*req* : certificate generating command in openssl.
-*nodes* : if this option is specified then if a private key is created it will not be encrypted.
-*keyform* : either PEM or DER.
-*x509* : this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA.  It has properties like:
-**days** until expiration.
-**outform** either PEM or DER.
+*req* : certificate generating command in openssl.  
+*nodes* : if this option is specified then if a private key is created it will not be encrypted.  
+*keyform* : either PEM or DER.  
+*x509* : this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA.  It has properties like:  
+**days** until expiration.  
+**outform** either PEM or DER.  
 
 ```
 Generating a 2048 bit RSA private key 
