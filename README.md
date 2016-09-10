@@ -151,46 +151,38 @@ ssh –i key.pem ubuntu@public_ip 
 ``` 
 Sudo su 
 ```  
-* Update your local repos 
- ``` 
+* Update your local repos  
+``` 
 apt-get update 
-``` 
+```   
 * Install apache2 package for apache server on Ubuntu: 
-``` 
+```  
 apt-get install -y apache2 
-``` 
+```  
 * Now you can access your public ip from the browser and it will load apache’s default web page. 
  
 ## Configuring Apache for https (ssl): 
 
 * Change the directory to apache’s home  
-
 ```
-Cd /etc/apache2/  
+cd /etc/apache2/  
 ```  
-
 * Create a symbolic link for the https virtual host (remember to use the absolute path, and not relative path or it will fail later on):  
- 
 ``` 
-ln –s /etc/apache2/sites-available/default-ssl.conf /etc/apahce2/sites-enabled/default-ssl.conf 
+ln –s /etc/apache2/sites-available/default-ssl.conf /etc/apahce2/sites-enabled/default-ssl.conf
 ```  
-
-* And linking ssl modules as well.  
-
+* And linking ssl modules as well   
 ``` 
 ln -s /etc/apache2/mods-available/socache_shmcb.load /etc/apache2/mods-enabled/socache_shmcb.load 
 ln -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled/ssl.conf 
 ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/ssl.load 
 ```  
-
 * Restart apache:  
-
 ``` 
 service apache2 restart 
 ```  
+Now you can access your public ip from the browser by HTTPS (though you’ll have the insecure page) and it will load apache’s default web page.   
 
-Now you can access your public ip from the browser by HTTPS (though you’ll have the insecure page) and it will load apache’s default web page. 
- 
 ## A moment here: 
 We enabled apache to listen on port 443, by linking the default-ssl.conf file into the enabled sites. If we quickly go through it, we will find that it uses *ubuntu’s default self signed certificate* located in  /etc/ssl/certs the default directory for certificates in ubuntu.  
 
