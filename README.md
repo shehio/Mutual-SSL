@@ -48,7 +48,7 @@ Generating a 2048 bit RSA private key 
 ..........................................+++ 
 .....................+++ 
 writing new private key to 'CA.key' 
-``` 
+```  
 
 ``` 
 You are about to be asked to enter information that will be incorporated 
@@ -65,68 +65,85 @@ Organization Name (eg, company) [Internet Widgits Pty Ltd]:Evil 
 Organizational Unit Name (eg, section) []: 
 Common Name (e.g. server FQDN or YOUR name) []:shehio 
 Email Address []:shehabyasser@gmail.com 
-``` 
-* Generate a server key pair 
+```  
+
+* Generate a server key pair  
+
 ``` 
 openssl genrsa -out server.key 2048 
-``` 
-* Generate a request file (to be signed by the CA):  (I omitted the previous prompt repeating here.) 
+```  
+
+* Generate a request file (to be signed by the CA):  (I omitted the previous prompt repeating here.)  
+
 ``` 
 openssl req -new -key server.key -out server.req 
+```  
+
+* See what we’ve got now:  
+
 ``` 
- 
-* See what we’ve got now: 
-``` 
-ls: 
+ls  
 CA.crtCA.keyserver.keyserver.req 
-``` 
-* Actually sign the server key by the CA: 
-``` 
+```  
+
+* Actually sign the server key by the CA:  
+
+```
 openssl x509 -req -in server.req -CA CA.crt -CAkey CA.key -set_serial 0x3E8  -extensions server -days 365 -outform PEM -out server.crt 
+```  
+
+* See what we’ve got now:  
+
 ``` 
- 
-* See what we’ve got now: 
- 
+ls
+CA.crt  CA.key server.crt  server.key  server.req  
 ``` 
-ls: 
-CA.crtCA.keyserver.crtserver.keyserver.req 
-``` 
-* Do the same for the client as for the server, create the key: 
+* Do the same for the client as for the server, create the key:  
+
 ``` 
 openssl genrsa -out client.key 2048 
-``` 
-* Create the request file: 
+```  
+
+* Create the request file:  
+
 ``` 
 openssl req -new -key client.key -out client.req 
-``` 
-* See what we’ve got: 
+```
+
+* See what we’ve got:  
+
 ``` 
 ls 
-CA.crtCA.keyclient.crtclient.keyclient.reqserver.crtserver.keyserver.req 
-``` 
+CA.crt  CA.key  client.crt  client.key  client.req  server.crt  server.key  server.req 
+```  
+
 * Generate the p12 (or pkcs12) file (compact file containing both the private key, and CA): 
+
 ``` 
 openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12 
 Enter Export Password: 
-Verifying - Enter Export Password: 
-``` 
- 
-* See what we’ve got: 
- 
+Verifying - Enter Export Password:
+```  
+
+* See what we’ve got:  
+
 ``` 
 ls 
-CA.crtCA.keyclient.crtclient.keyclient.p12client.reqserver.crtserver.keyserver.req 
-``` 
- 
+CA.crt  CA.key  client.crt  client.key  client.p12  client.req  server.crt  server.key  server.req 
+```  
+
 ## Spinning up an EC2 instance: 
-*  launch a free tier EC2 instance on AWS, choose ubuntu as the OS, and open at least ports: 22 for ssh, 80 for http, 443 for https from anywhere. 
-* Don’t forget to tag your instance, for easier recognition. 
-* Create a key pair or choose an existing key. 
-* Log in (to user ubuntu and by the key you have/downloaded). 
+
+* launch a free tier EC2 instance on AWS, choose ubuntu as the OS, and open at least ports: 22 for ssh, 80 for http, 443 for https from anywhere.  
+* Don’t forget to tag your instance, for easier recognition.  
+* Create a key pair or choose an existing key.  
+* Log in (to user ubuntu and by the key you have/downloaded).  
+
+
 ```` 
 ssh –i key.pem ubuntu@public_ip 
-``` 
- 
+```
+  
 ## Install and configure Apache2: 
  
 * After logging in: elevate your privileges: 
@@ -255,7 +272,7 @@ note that:  
 JAVAHOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home 
 ``` 
 ##References: 
-* [Certificates in ubuntu](https://help.ubuntu.com/lts/serverguide/certificates-and-security.html) 
+*[Certificates in ubuntu](https://help.ubuntu.com/lts/serverguide/certificates-and-security.html) 
 *[How do I create a self-signed SSL certificate?](http://askubuntu.com/questions/49196/how-do-i-create-a-self-signed-ssl-certificate) 
 *[Certificates and Public Keys](https://msdn.microsoft.com/en-us/library/windows/desktop/aa376502(v=vs.85).aspx) 
 *[https://www.openssl.org/docs/manmaster/apps/req.html](https://www.openssl.org/docs/manmaster/apps/req.html) 
