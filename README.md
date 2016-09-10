@@ -147,10 +147,10 @@ ssh –i key.pem ubuntu@public_ip 
   
 ## Install and configure Apache2: 
  
-* After logging in: elevate your privileges: 
+* After logging in, elevate your privileges:  
 ``` 
 Sudo su 
-``` 
+```  
 * Update your local repos 
  ``` 
 apt-get update 
