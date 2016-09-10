@@ -182,7 +182,7 @@ service apache2 restart 
 Now you can access your public ip from the browser by HTTPS (though you’ll have the insecure page) and it will load apache’s default web page.   
 
 ## A moment here: 
-We enabled apache to listen on port 443, by linking the default-ssl.conf file into the enabled sites. If we quickly go through it, we will find that it uses *ubuntu’s default self signed certificate* located in  /etc/ssl/certs the default directory for certificates in ubuntu.  
+We enabled apache to listen on port 443, by linking the default-ssl.conf file into the enabled sites. If we quickly go through it, we will find that it uses *ubuntu’s default self signed certificate* located in ``` /etc/ssl/certs ``` the default directory for certificates in ubuntu.  
 
 ``` 
 SSLCertificateFile/etc/ssl/certs/ssl-cert-snakeoil.pem 
