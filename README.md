@@ -271,18 +271,18 @@ Index: 
 
 ``` 
 /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/security/cacerts 
-```  
+```   
 note that:  
 ``` 
 JAVAHOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home
 ```  
 
 ## References: 
-*[Certificates in ubuntu](https://help.ubuntu.com/lts/serverguide/certificates-and-security.html) 
-*[How do I create a self-signed SSL certificate?](http://askubuntu.com/questions/49196/how-do-i-create-a-self-signed-ssl-certificate) 
-*[Certificates and Public Keys](https://msdn.microsoft.com/en-us/library/windows/desktop/aa376502(v=vs.85).aspx) 
-*[https://www.openssl.org/docs/manmaster/apps/req.html](https://www.openssl.org/docs/manmaster/apps/req.html) 
-*[2 Way SSL with example](https://prasenjitdas235.blogspot.com/2014/11/2-way-ssl-with-example.html?showComment=1471532549494#c769944397867855572) 
-*[Importing the private-key/public-certificate pair in the Java KeyStore](http://stackoverflow.com/questions/17695297/importing-the-private-key-public-certificate-pair-in-the-java-keystore) 
-*[Why does Chrome on 1 computer say my certificate is invalid/insecure?](http://serverfault.com/questions/684736/why-does-chrome-on-1-computer-say-my-certificate-is-invalid-insecure) 
+* [Certificates in ubuntu](https://help.ubuntu.com/lts/serverguide/certificates-and-security.html)  
+* [How do I create a self-signed SSL certificate?](http://askubuntu.com/questions/49196/how-do-i-create-a-self-signed-ssl-certificate)  
+* [Certificates and Public Keys](https://msdn.microsoft.com/en-us/library/windows/desktop/aa376502(v=vs.85).aspx)  
+* [https://www.openssl.org/docs/manmaster/apps/req.html](https://www.openssl.org/docs/manmaster/apps/req.html)  
+* [2 Way SSL with example](https://prasenjitdas235.blogspot.com/2014/11/2-way-ssl-with-example.html?showComment=1471532549494#c769944397867855572)  
+* [Importing the private-key/public-certificate pair in the Java KeyStore](http://stackoverflow.com/questions/17695297/importing-the-private-key-public-certificate-pair-in-the-java-keystore)  
+* [Why does Chrome on 1 computer say my certificate is invalid/insecure?](http://serverfault.com/questions/684736/why-does-chrome-on-1-computer-say-my-certificate-is-invalid-insecure)  
 
