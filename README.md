@@ -208,20 +208,20 @@ For starters let's use the root certificate, by it’s own without using any cer
 Note: I copied the keys into the home directory for ubuntu.  
  
 * Modify those properties into the sites-available:  
- 
+
 ``` 
 SSLCertificateFile/home/ubuntu/CA.crt 
 SSLCertificateKeyFile /home/ubuntu/CA.key 
-``` 
+```  
 * And as always, restart the server:
 
 ```
 service apache2 restart  
-```
+```  
 
-We can trust the address from the web browser, if we add the CA.crt from the web browser (for chrome this can’t be trusted anyway at least because it’s using sha1: more on that in the reference) 
- 
-* Now, let’s use https (ssl) using the server key, experiencing the certificate chaining here by modifying the same properties again in /etc/apache2/sites-enabled/default-ssl.conf, and add the CA:  
+We can trust the address from the web browser, if we add the CA.crt from the web browser (for chrome this can’t be trusted anyway at least because it’s using sha1: more on that in the reference)  
+
+* Now, let’s use https (ssl) using the server key, experiencing the certificate chaining here by modifying the same properties again in /etc/apache2/sites-enabled/default-ssl.conf, and add the CA:    
 
 ``` 
 SSLCertificateFile/home/ubuntu/server.crt 
@@ -237,48 +237,44 @@ service apache2 restart 
 
 Then give it a visit from your browser, and shall be working again.  
  
-### Enabling Mutual Authentication:
- 
+### Enabling Mutual Authentication:  
+
 *  Enable client authentication: 
 ``` 
 SSLVerifyClient require 
 SSLVerifyDepth  1 
 SSLCACertificateFile /home/ubuntu/CA.crt 
-``` 
-* And then restart the server 
+```  
+* And then restart the server  
+```
 service apache2 restart 
- 
- 
+```  
 This shan’t be reachable from unless you import the p12 file to your browser, you can do so in chrome from settings and in your certificates, you can import client.p12 file. 
  
 ### How does this fit into Java? 
  
-### One way ssl: 
+### One way ssl:   
  
 Equivalently to trusting the CA certificate, in a web browser, we’ll have to add the CA certificate into the trust store:  
 ``` 
 keytool -import -alias CA -file CA.crt -keystore truststore  
-``` 
+```  
  
-Mutual SSL: 
+### Mutual SSL: 
 Equivalent to adding the p12 file to the certificates in the browser: import the cert to your keystore to be able to use it in java. 
 ```
 keytool -importkeystore -destkeystore keystore.jks -srckeystore client.p12 -srcstoretype pkcs12 
-```
+```  
 Index: 
-In cryptography, X.509 is an important standard for a public key infrastructure (PKI) to manage digital certificates[1] and public-key encryption and a key part of the Transport Layer Security protocol used to secure web and email communication 
- 
-A public key infrastructure (PKI) is a set of roles, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates[1] and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email. 
- 
-Difference between PEM and DER is that the first encodes  in base64 and encrypts it, while the latter encodes in binary, the default format in openssl is PEM. 
- 
-PKCS#12 or PFX format is a binary format for storing the server certificate, any intermediate certificates, and the private key into a single encryptable file.  
- 
-The default trust store for java is for java 8, and on mac.   
+* In cryptography, X.509 is an important standard for a public key infrastructure (PKI) to manage digital certificates[1] and public-key encryption and a key part of the Transport Layer Security protocol used to secure web and email communication 
+* A public key infrastructure (PKI) is a set of roles, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates[1] and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email. 
+* Difference between PEM and DER is that the first encodes in base64 and encrypts it, while the latter encodes in binary, the default format in openssl is PEM. 
+* PKCS#12 or PFX format is a binary format for storing the server certificate, any intermediate certificates, and the private key into a single encryptable file.  
+* The default trust store for java is for java 8, and on mac: 
 
 ``` 
 /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/security/cacerts 
-``` 
+```  
 note that:  
 ``` 
 JAVAHOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home
