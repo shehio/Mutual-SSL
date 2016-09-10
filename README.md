@@ -216,7 +216,7 @@ service apache2 restart
 
 We can trust the address from the web browser, if we add the CA.crt from the web browser (for chrome this can’t be trusted anyway at least because it’s using sha1: more on that in the reference)  
 
-* Now, let’s use https (ssl) using the server key, experiencing the certificate chaining here by modifying the same properties again in /etc/apache2/sites-enabled/default-ssl.conf, and add the CA:    
+* Now, let’s use https (ssl) using the server key, experiencing the certificate chaining here by modifying the same properties again in ``` /etc/apache2/sites-enabled/default-ssl.conf ```, and add the CA:    
 
 ``` 
 SSLCertificateFile/home/ubuntu/server.crt 
