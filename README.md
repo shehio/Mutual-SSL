@@ -18,8 +18,8 @@ The key store saves your private keys, while the trust store save the certificat
  
 * What’s the difference between a public key, and a certificate? 
 A certificate contains a public key. The certificate, in addition to the public key, contains additional information, such as issuer, what it's supposed to be used for, and any other type of metadata. Typically a certificate is itself signed with a private key that verifies its authenticity. 
-## 
-## Notes: 
+ 
+##Notes: 
 By default, a key pair is generated and (encrypted by a passphrase), and then the public key is extracted from that file by the –pubout option for openssl. 
  
 ## Assumptions: 
