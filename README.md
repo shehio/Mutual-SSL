@@ -35,6 +35,7 @@ openssl req -newkey rsa:2048 -nodes -keyform PEM -keyout CA.key -x509 -days 365 
 ```
 
 ### options meaning:
+
 *req* : certificate generating command in openssl.
 *nodes* : if this option is specified then if a private key is created it will not be encrypted.
 *keyform* : either PEM or DER.
