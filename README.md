@@ -39,9 +39,7 @@ openssl req -newkey rsa:2048 -nodes -keyform PEM -keyout CA.key -x509 -days 365 
 * *req* : certificate generating command in openssl.  
 * *nodes* : if this option is specified then if a private key is created it will not be encrypted.  
 * *keyform* : either PEM or DER.  
-* *x509* : this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA.  It has properties like:  
-..* **days** until expiration.  
-..* **outform** either PEM or DER.  
+* *x509* : this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA.  It has properties like:   **days** until expiration or **outform** either PEM or DER.  
 
 ```
 Generating a 2048 bit RSA private key 
