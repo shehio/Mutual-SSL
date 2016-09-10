@@ -23,17 +23,17 @@ A certificate contains a public key. The certificate, in addition to the public 
 By default, a key pair is generated and (encrypted by a passphrase), and then the public key is extracted from that file by the –pubout option for openssl.
 
 ## Assumptions: 
-I am using a mac, having openssl installed. 
- 
-Setting up our keys: 
- 
-Let’s work in an empty directory (say: ~/ssl_keys) 
- 
-* Create a self-signed certificate authority (a private key pair) :  
+I am using a mac, having openssl installed.
+
+### Setting up our keys:
+Let’s work in an empty directory (say: ~/ssl_keys)
+
+* Create a self-signed certificate authority (a private key pair):
  
 ``` 
 openssl req -newkey rsa:2048 -nodes -keyform PEM -keyout CA.key -x509 -days 365 -outform PEM -out CA.crt 
-``` 
+```
+
 ### options meaning:  
 *req* : certificate generating command in openssl 
 *nodes* : if this option is specified then if a private key is created it will not be encrypted 
