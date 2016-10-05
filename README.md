@@ -1,6 +1,5 @@
 # Mutual-SSL
 ## Motivation: 
- 
 * Why do we need ssl/tls?  
 Integrity, and confidentiality. In other words: What being said isn’t tampered (by a man in the middle) with, and to ensure that a party is really who he is claiming to be. 
  
@@ -144,7 +143,6 @@ ssh –i key.pem ubuntu@public_ip 
 ```
   
 ## Install and configure Apache2: 
- 
 * After logging in, elevate your privileges:  
 ``` 
 sudo su 
@@ -158,7 +156,7 @@ apt-get update 
 apt-get install -y apache2 
 ```  
 * Now you can access your public ip from the browser and it will load apache’s default web page.  
- 
+
 ## Configuring Apache for https (ssl):  
 
 * Change the directory to apache’s home  
@@ -246,15 +244,13 @@ service apache2 restart 
 ```  
 This shan’t be reachable from unless you import the p12 file to your browser, you can do so in chrome from settings and in your certificates, you can import client.p12 file. 
  
-### How does this fit into Java? 
- 
+### How does this fit into Java?  
 ### One way ssl:   
  
 Equivalently to trusting the CA certificate, in a web browser, we’ll have to add the CA certificate into the trust store:  
 ``` 
 keytool -import -alias CA -file CA.crt -keystore truststore  
 ```  
- 
 ### Mutual SSL: 
 Equivalent to adding the p12 file to the certificates in the browser: import the cert to your keystore to be able to use it in java. 
 ```
