@@ -138,7 +138,7 @@ CA.crt  CA.key  client.crt  client.key  client.p12  client.req  server.crt  serv
 * Log in (to user ubuntu and by the key you have/downloaded).  
 
 
-```` 
+```
 ssh –i key.pem ubuntu@public_ip 
 ```
   
